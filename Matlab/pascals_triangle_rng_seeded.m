@@ -1,7 +1,7 @@
 %use fibinochi
-seed=.0000000000000000000000000000000000000000000000001;
+seed=5;
 T=[seed];  
-layers=10000;
+layers=1000;
 for row=2:layers
     for i=1:row
         if(i==(seed||row))
