@@ -1,4 +1,4 @@
-sequence=[.00000000001,1];
+sequence=[1,1];
 above=1;
 below=1;
 difference=[];
