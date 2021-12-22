@@ -1,4 +1,4 @@
-itterations=99
+itterations=999
 zeros=[0]
 ones=[0]
 twos=[0]
@@ -10,21 +10,21 @@ sevens=[0]
 eights=[0]
 nines=[0]
 for i = 0:itterations
-    2^i
-    [a0,b1,c2,d3,e4,f5,g6,h7,j8,k9] = f(int2str(2^i))
+    [a0,b1,c2,d3,e4,f5,g6,h7,j8,k9] = count(int2str(2^i))
     zeros(length(zeros)+1)=a0+zeros(length(zeros))
-    ones(length(ones)+1)=b1+ones(length(ones))
-    twos(length(twos)+1)=c2+twos(length(twos))
-    threes(length(threes)+1)=d3+threes(length(threes))
-    fours(length(fours)+1)=e4+fours(length(fours))
-    fives(length(fives)+1)=f5+fives(length(fives))
-    sixs(length(sixs)+1)=g6+sixs(length(sixs))
-    sevens(length(sevens)+1)=h7+sevens(length(sevens))
-    eights(length(eights)+1)=j8+eights(length(eights))
-    nines(length(nines)+1)=k9+nines(length(nines))
+    %ones(length(ones)+1)=b1+ones(length(ones))
+    %twos(length(twos)+1)=c2+twos(length(twos))
+    %threes(length(threes)+1)=d3+threes(length(threes))
+    %fours(length(fours)+1)=e4+fours(length(fours))
+    %fives(length(fives)+1)=f5+fives(length(fives))
+    %sixs(length(sixs)+1)=g6+sixs(length(sixs))
+    %sevens(length(sevens)+1)=h7+sevens(length(sevens))
+    %eights(length(eights)+1)=j8+eights(length(eights))
+    %nines(length(nines)+1)=k9+nines(length(nines))
 end
 hold on
 plot([0:itterations],zeros(2:itterations+2))
+%{
 plot([0:itterations],ones(2:itterations+2))
 plot([0:itterations],twos(2:itterations+2))
 plot([0:itterations],threes(2:itterations+2))
@@ -34,11 +34,16 @@ plot([0:itterations],sixs(2:itterations+2))
 plot([0:itterations],sevens(2:itterations+2))
 plot([0:itterations],eights(2:itterations+2))
 plot([0:itterations],nines(2:itterations+2))
-xlim([0 10])
-ylim([0 10])
+%}
+xlim([0 itterations])
+%ylim([0 10])
 hold off
 
-function [a,b,c,d,e,f,g,h,j,k] = f(string)
+ID=fopen('data_output.txt','w')
+fprintf(ID,'%d,',zeros)
+fclose(ID)
+
+function [a,b,c,d,e,f,g,h,j,k] = count(string)
     a=0;
     b=0;
     c=0;
@@ -81,4 +86,12 @@ function [a,b,c,d,e,f,g,h,j,k] = f(string)
             k=k+1;
         end
     end
+end
+
+function [] = output(numbers)
+    cd 'C:\Users\jacob\Documents\lagg\Matlab\power_counting'
+    a=numbers
+    ID=fopen('data_output.txt','w')
+    fprintf(ID,'%d,',a)
+    fclose(ID)
 end
